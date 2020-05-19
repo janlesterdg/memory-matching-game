@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Memory Matching Game</title>
+  <link rel="icon" href="style/bg/m-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="style/styles.min.css">
+</head>
+
+<body>
+  <header>
+    <h1>Memory Matching Game <span></h1>
+    <span class="tool-tip">
+      <button aria-label="Web Technologies Reviewer" onClick="openReviewModal()">
+        <svg width="40" height="40">
+          <circle cx="20" cy="20" r="15" stroke-width="2" fill="#000000" />
+          <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="1em" dy=".4em">💡</text>
+        </svg>
+      </button>
+      <span class="tool-tip-text">Reviewer</span>
+    </span>
+  </header>
+  <main>
+
+    <section>
+      <div class="game-status-details">
+        <div class="rating">
+          <span class="star">😒</span>
+          <span class="star">😐</span>
+          <span class="star">😀</span>
+          <span class="star">😊</span>
+          <span class="star">😍</span>
+        </div>
+        <span class="move-counter" id="moveCounter"></span>
+        <span class="timer" id="timer">0 mins 0 secs</span>
+        <button class="restart-btn" id="restartBtn" onClick="startGame()" aria-label="restart game">↻</button>
+      </div>
+      <table class="game-board">
+        <tbody class="game-grid">
+          <tr class="game-grid-row">
+            <td class="game-card">
+              <img class="game-card-img" src="img/1.jpg" alt="bootstrap">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/2.jpg" alt="css">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/3.jpg" alt="html">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/4.jpg" alt="jquery">
+            </td>
+          </tr>
+          <tr class="game-grid-row">
+            <td class="game-card">
+              <img class="game-card-img" src="img/5.jpg" alt="javascript">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/6.jpg" alt="mysql">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/7.jpg" alt="nodejs">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/8.jpg" alt="php">
+            </td>
+          </tr>
+          <tr class="game-grid-row">
+            <td class="game-card">
+              <img class="game-card-img" src="img/1.jpg" alt="bootstrap">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/2.jpg" alt="css">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/3.jpg" alt="html">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/4.jpg" alt="jquery">
+            </td>
+          </tr>
+          <tr class="game-grid-row">
+            <td class="game-card">
+              <img class="game-card-img" src="img/5.jpg" alt="javascript">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/6.jpg" alt="mysql">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/7.jpg" alt="nodejs">
+            </td>
+            <td class="game-card">
+              <img class="game-card-img" src="img/8.jpg" alt="php">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </section>
+
+    <!--Modal on game over -->
+    <div class="modal" id="gameOverModal">
+      <div class="modal-content">
+        <span aria-label="close" role="button" class="close" id="closeModal">&times;</span>
+        <div class="modal-header">
+          <h2>Game Over</h2>
+        </div>
+        <div class="modal-body">
+          <div class="message">
+            <p>Congratulations! You successfully completed the game.
+            <p>You completed the game using <span id="totalGameMoves"></span> moves
+              <br>in <span id="totalGameTime"></span>
+            </p>
+            <p>Your rating is: <span id="finalStarRating"></span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onClick="playAgain()">Play Again &nbsp;🤖</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal to display Web Technologies Reviewer -->
+    <div class="modal" id="reviewModal">
+      <div class="modal-content">
+        <span aria-label="close" role="button" class="close" onClick="closeReviewModal()">&times;</span>
+        <div class="modal-header">
+          <h2>Web Technologies Reviewer</h2>
+        </div>
+        <div class="modal-body">
+          <div class="help-tips">
+            <ul>
+              <li>&diams; <em>HTML</em> (HyperText Markup Language) is the standard markup language for documents
+                designed to be displayed in a web browser.
+                <ul>
+                  <li>&diamond; It defines the meaning and structure of web content.</li>
+                  <li>&diamond; It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting
+                    languages such as JavaScript.</li>
+                  <li>&diamond; HTML was created by Tim Berners-Lee in 1991.</li>
+                  <li>&diamond; Source: <a href="https://devdocs.io/html/" target="_blank">HTML Documentation</a></li>
+                </ul>
+              </li><br>
+              <li>&diams; <em>CSS</em> stands for Cascading Style Sheets.
+                <ul>
+                  <li>&diamond; CSS was first proposed by Håkon Wium Lie on October 10, 1994. </li>
+                  <li>&diamond; CSS describes how HTML elements are to be displayed on screen, paper, or in other media.
+                  </li>
+                  <li>&diamond; It can control the layout of multiple web pages all at once.</li>
+                  <li>&diamond; CSS is independent of HTML and can be used with any XML-based markup language.</li>
+                  <li>&diamond; A CSS ends with the extension ".css".</li>
+                  <li>&diamond; Source: <a href="https://devdocs.io/css/" target="_blank">CSS Documentation</a></li>
+                </ul>
+              </li><br>
+              <li>&diams; <em>JavaScript</em> (JS) is a lightweight, interpreted, or just-in-time compiled programming
+                language with first-class functions.
+                <ul>
+                  <li>&diamond; JavaScript is most commonly used as a client side scripting language.</li>
+                  <li>&diamond; JavaScript is a programming language used primarily by Web browsers to create a dynamic
+                    and interactive experience for the user.</li>
+                  <li>&diamond; Created by Brendan Eich in 1995 during his time at Netscape Communications.</li>
+                  <li>&diamond; Source: <a href="https://devdocs.io/javascript/" target="_blank">JavaScript
+                      Documentation</a></li>
+                </ul>
+              </li><br>
+              <li>&diams; <em>PHP</em> is a server side scripting language that is used to develop Static/Dynamic
+                websites or Web applications.
+                <ul>
+                  <li>&diamond; It was originally created by Rasmus Lerdorf in 1994.</li>
+                  <li>&diamond; PHP stands for Hypertext Pre-processor, that earlier stood for Personal Home Pages.</li>
+                  <li>&diamond; PHP scripts can only be interpreted on a server that has PHP installed.</li>
+                  <li>&diamond; The client computers accessing the PHP scripts require a web browser only.</li>
+                  <li>&diamond; A PHP file contains PHP tags and ends with the extension ".php".</li>
+                  <li>&diamond; Source: <a href="https://www.php.net/docs.php" target="_blank">PHP Documentation</a>
+                  </li>
+                </ul>
+              </li><br>
+              <li>&diams; <em>MySQL</em> is an open-source relational database management system (RDBMS).
+                <ul>
+                  <li>&diamond; Its name is a combination of "My", the name of co-founder Michael Widenius's daughter,
+                    and "SQL", the abbreviation for Structured Query Language.</li>
+                  <li>&diamond; The most common use for mySQL however, is for the purpose of a web database.</li>
+                  <li>&diamond; Source: <a href="https://dev.mysql.com/doc/" target="_blank">MySQL Documentation</a>
+                  </li>
+                </ul>
+              </li><br>
+
+              <li>&diams; <em>Bootstrap</em> is a free and open-source CSS framework directed at responsive,
+                mobile-first front-end web development..
+                <ul>
+                  <li>&diamond; It contains CSS- and (optionally) JavaScript-based design templates for typography,
+                    forms, buttons, navigation and other interface components.</li>
+                  <li>&diamond; Originally created by a designer and a developer at Twitter, Bootstrap has become one of
+                    the most popular front-end frameworks and open source projects in the world.</li>
+                  <li>&diamond; Source: <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/"
+                      target="_blank">Bootstrap Documentation</a></li>
+                </ul>
+              </li><br>
+              <li>&diams; <em>jQuery</em> is a lightweight, "write less, do more", JavaScript library.
+                <ul>
+                  <li>&diamond; The purpose of jQuery is to make it much easier to use JavaScript on your website.</li>
+                  <li>&diamond; jQuery takes a lot of common tasks that require many lines of JavaScript code to
+                    accomplish, and wraps them into methods that you can call with a single line of code.</li>
+                  <li>&diamond; Source: <a href="https://api.jquery.com/" target="_blank">jQuery Documentation</a></li>
+                </ul>
+              </li><br>
+              <li>&diams; <em>Node.js</em> is an open-source, cross-platform, JavaScript runtime environment that
+                executes JavaScript code outside of a browser.
+                <ul>
+                  <li>&diamond; Node.js lets developers use JavaScript to write command line tools and for server-side
+                    scripting—running scripts server-side to produce dynamic web page content before the page is sent to
+                    the user's web browser.</li>
+                  <li>&diamond; Node.js was written initially by Ryan Dahl in 2009</li>
+                  <li>&diamond; Node.js uses asynchronous programming!</li>
+                  <li>&diamond; Source: <a href="https://nodejs.org/en/docs/" target="_blank">Node.js Documentation</a>
+                  </li>
+                </ul>
+              </li><br>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="brown-button" onClick="closeReviewModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script/game.js"></script>
+  <noscript>Sorry, you cannot play this game. Your browser does not support Javascript.</noscript>
+</body>
+
+</html>
